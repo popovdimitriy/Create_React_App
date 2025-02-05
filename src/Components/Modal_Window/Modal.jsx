@@ -36,9 +36,7 @@ function Modal() {
       динамический контент через чилдрен внутри модельного окна - Параграф и кнопку   */}
       <ModalApp open={open} setOpen={setOpen}>
         <img src="https://media2.giphy.com/media/xT0xeJpnrWC4XWblEk/giphy.gif" />
-        <h3>Это модельное окно</h3>
-        <button>12345</button>
-      </ModalApp>
+         </ModalApp>
     </div>
   );
 }

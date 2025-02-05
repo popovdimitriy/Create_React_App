@@ -9,10 +9,10 @@ import AppUsers from "./Components/Users/App";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AppUsers/>
     <Counter />
-    <AppCurrency />
-    <Modal />
     <AppQuiz />
+    <Modal />
+    <AppCurrency />
+    <AppUsers />
   </React.StrictMode>
 );

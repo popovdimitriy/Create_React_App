@@ -1,10 +1,12 @@
 
 .App {
-  display: flex;
+  display: inline-block;
   align-items: center;
-  justify-content: center;
-  height: 100vh;
+  height: 25vh;
   text-align: center;
+  border: 2px solid black;
+  padding: 20px;
+  border-radius: 20px;
 
   h1 {
     color: #000;
