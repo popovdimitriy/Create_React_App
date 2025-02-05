@@ -1,6 +1,6 @@
-import { Skeleton } from './Skeleton';
-import { User } from './User';
-import styles from './Users.module.css';
+import { Skeleton } from "./Skeleton";
+import { User } from "./User";
+import styles from "./Users.module.css";
 
 export const Users = ({
   items,
@@ -55,7 +55,6 @@ export const Users = ({
             ))}
         </ul>
       )}
-
       <button onClick={onClickSendInvites} className={styles.send_invite_btn}>
         Отправить приглашение
       </button>
