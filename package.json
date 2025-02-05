@@ -5,6 +5,7 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react": "19.0.0",
+    "react-content-loader": "^7.0.2",
     "react-dom": "19.0.0",
     "react-scripts": "5.0.1",
     "vite": "^6.0.11",
