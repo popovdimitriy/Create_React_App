@@ -1,5 +1,6 @@
-import { useState } from 'react';
-import styles from './Modal.module.css';
+/* eslint-disable jsx-a11y/alt-text */
+import { useState } from "react";
+import styles from "./Modal.module.css";
 
 const ModalApp = ({ open, setOpen, children }) => (
   <div
