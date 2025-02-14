@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Collection } from "./Collection";
 
 function AppPhotos() {
+  const [searchValue, setSearchValue] = useState([]);
   const [collections, setCollections] = useState([]);
 
   useEffect(() => {
@@ -28,14 +29,20 @@ function AppPhotos() {
           <li>Города</li>
         </ul>
         <input
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
           className={styles.search_input}
           placeholder="Поиск по названию"
         />
       </div>
       <div className={styles.content}>
-        {collections.map((obj, index) => (
-          <Collection key={index} name={obj.name} images={obj.photos} />
-        ))}
+        {collections
+          .filter((obj) => {
+            return obj.name.toLowerCase().includes(searchValue.toLowerCase());
+          })
+          .map((obj, index) => (
+            <Collection key={index} name={obj.name} images={obj.photos} />
+          ))}
       </div>
       <ul className={styles.pagination}>
         <li>1</li>
