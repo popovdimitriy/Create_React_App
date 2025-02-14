@@ -37,9 +37,9 @@ function AppPhotos() {
       </div>
       <div className={styles.content}>
         {collections
-          .filter((obj) => {
-            return obj.name.toLowerCase().includes(searchValue.toLowerCase());
-          })
+          .filter((obj) =>
+            obj.name.toLowerCase().includes(searchValue)
+          )
           .map((obj, index) => (
             <Collection key={index} name={obj.name} images={obj.photos} />
           ))}
