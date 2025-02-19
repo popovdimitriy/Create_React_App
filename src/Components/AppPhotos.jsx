@@ -2,12 +2,28 @@ import styles from "./Photos.module.css";
 import { useEffect, useState } from "react";
 import { Collection } from "./Collection";
 
+const cats = [
+  { name: "Все" },
+  { name: "Море" },
+  { name: "Горы" },
+  { name: "Архитектура" },
+  { name: "Города" },
+];
+
 function AppPhotos() {
+  const [categoryId, setCategoryId] = useState(0);
   const [searchValue, setSearchValue] = useState([]);
   const [collections, setCollections] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch("https://67ae4c489e85da2f020d1c47.mockapi.io/Collections")
+    setIsLoading(true);
+    fetch(
+      `https://67ae4c489e85da2f020d1c47.mockapi.io/Collections?${
+        categoryId ? `category=${categoryId}` : ""
+      }`
+    )
       .then((res) => res.json())
       .then((json) => {
         setCollections(json);
@@ -15,18 +31,23 @@ function AppPhotos() {
       .catch((err) => {
         console.warn(err);
         alert("Ошибка при получении данных");
-      });
-  }, []);
+      })
+      .finally(() => setIsLoading(false));
+  }, [categoryId]);
   return (
     <div className={styles.App}>
       <h1>Моя коллекция фотографий</h1>
       <div className={styles.top}>
         <ul className={styles.tags}>
-          <li className={styles.active}>Все</li>
-          <li>Горы</li>
-          <li>Море</li>
-          <li>Архитектура</li>
-          <li>Города</li>
+          {cats.map((obj, i) => (
+            <li
+              onClick={() => setCategoryId(i)}
+              className={categoryId === i ? `${styles.active}` : `${styles}`}
+              key={obj.name}
+            >
+              {obj.name}
+            </li>
+          ))}
         </ul>
         <input
           value={searchValue}
@@ -36,18 +57,25 @@ function AppPhotos() {
         />
       </div>
       <div className={styles.content}>
-        {collections
-          .filter((obj) =>
-            obj.name.toLowerCase().includes(searchValue)
-          )
-          .map((obj, index) => (
-            <Collection key={index} name={obj.name} images={obj.photos} />
-          ))}
+        {isLoading ? (
+          <h2>Идет загрузка...</h2>
+        ) : (
+          collections
+            .filter((obj) => obj.name.toLowerCase().includes(searchValue))
+            .map((obj, index) => (
+              <Collection key={index} name={obj.name} images={obj.photos} />
+            ))
+        )}
       </div>
       <ul className={styles.pagination}>
-        <li>1</li>
-        <li className={styles.active}>2</li>
-        <li>3</li>
+        {[...Array(5)].map((_, i) => (
+          <li
+            onClick={() => setPage(i)}
+            className={page === i ? `${styles.active}` : `${styles}`}
+          >
+            {i + 1}
+          </li>
+        ))}
       </ul>
     </div>
   );
