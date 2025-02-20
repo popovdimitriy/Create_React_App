@@ -5,6 +5,7 @@ import AppCurrency from "./Components/Currency_convertor/AppCurrency";
 import Modal from "./Components/Modal_Window/Modal";
 import AppQuiz from "./Components/Quiz/Quiz";
 import AppUsers from "./Components/Users/App";
+import AppPhotos from "./Components/Photos/AppPhotos";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -14,5 +15,6 @@ root.render(
     <Modal />
     <AppCurrency />
     <AppUsers />
+    <AppPhotos/>
   </React.StrictMode>
 );
