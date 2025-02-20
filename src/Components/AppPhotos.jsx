@@ -19,11 +19,8 @@ function AppPhotos() {
 
   useEffect(() => {
     setIsLoading(true);
-    fetch(
-      `https://67ae4c489e85da2f020d1c47.mockapi.io/Collections?${
-        categoryId ? `category=${categoryId}` : ""
-      }`
-    )
+    const category = categoryId ? `category=${categoryId}` : "";
+    fetch(`https://67ae4c489e85da2f020d1c47.mockapi.io/Collections?page=${page}&limit=3&${category}`)
       .then((res) => res.json())
       .then((json) => {
         setCollections(json);
@@ -33,7 +30,7 @@ function AppPhotos() {
         alert("Ошибка при получении данных");
       })
       .finally(() => setIsLoading(false));
-  }, [categoryId]);
+  }, [categoryId, page]);
   return (
     <div className={styles.App}>
       <h1>Моя коллекция фотографий</h1>
@@ -70,8 +67,8 @@ function AppPhotos() {
       <ul className={styles.pagination}>
         {[...Array(5)].map((_, i) => (
           <li
-            onClick={() => setPage(i)}
-            className={page === i ? `${styles.active}` : `${styles}`}
+            onClick={() => setPage(i + 1)}
+            className={page === i + 1 ? `${styles.active}` : `${styles}`}
           >
             {i + 1}
           </li>
