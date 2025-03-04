@@ -41,7 +41,7 @@ function Result({ correct }) {
       <h2>
         Вы отгадали {correct} ответа из {questions.length}
       </h2>
-      <a href="https://popovdimitriy.github.io/Create_React_App/">
+      <a href="/Create_React_App">
         <button> Попробовать снова </button>
       </a>
     </div>
