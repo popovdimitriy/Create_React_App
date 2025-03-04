@@ -5,30 +5,30 @@
 /* eslint-disable react/self-closing-comp */
 /* eslint-disable react/prop-types */
 /* eslint-disable jsx-a11y/alt-text */
-import { useState } from 'react';
-import styles from './Quiz.module.css';
+import { useState } from "react";
+import styles from "./Quiz.module.css";
 
 const questions = [
   {
-    title: 'React - это ... ?',
-    variants: ['библиотека', 'фреймворк', 'приложение'],
+    title: "React - это ... ?",
+    variants: ["библиотека", "фреймворк", "приложение"],
     correct: 0,
   },
   {
-    title: 'Компонент - это ... ',
+    title: "Компонент - это ... ",
     variants: [
-      'приложение',
-      'часть приложения или страницы',
-      'то, что я не знаю что такое',
+      "приложение",
+      "часть приложения или страницы",
+      "то, что я не знаю что такое",
     ],
     correct: 1,
   },
   {
-    title: 'Что такое JSX?',
+    title: "Что такое JSX?",
     variants: [
-      'Это простой HTML',
-      'Это функция',
-      'Это тот же HTML, но с возможностью выполнять JS-код',
+      "Это простой HTML",
+      "Это функция",
+      "Это тот же HTML, но с возможностью выполнять JS-код",
     ],
     correct: 2,
   },
@@ -41,7 +41,7 @@ function Result({ correct }) {
       <h2>
         Вы отгадали {correct} ответа из {questions.length}
       </h2>
-      <a href="/dist">
+      <a href="https://popovdimitriy.github.io/Create_React_App/">
         <button> Попробовать снова </button>
       </a>
     </div>
